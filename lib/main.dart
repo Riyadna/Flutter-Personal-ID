@@ -6,9 +6,15 @@ void main() {
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int level = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +28,16 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
       ),
-      body: const Padding(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            level += 1;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey,
+      ),
+      body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,7 +61,7 @@ class MyApp extends StatelessWidget {
             ),
             SizedBox(height: 1.0),
             Text(
-              'YatheentharanRiyadna',
+              'Yatheentharan Riyadna',
               style: TextStyle(
                 color: Color.fromARGB(255, 175, 213, 244),
                 letterSpacing: 2.0,
@@ -56,7 +71,7 @@ class MyApp extends StatelessWidget {
             ),
             SizedBox(height: 30.0),
             Text(
-              'BIRTH DATE',
+              'DATE OF BIRTH',
               style: TextStyle(
                 color: Colors.grey,
                 letterSpacing: 2.0,
@@ -64,7 +79,25 @@ class MyApp extends StatelessWidget {
             ),
             SizedBox(height: 1.0),
             Text(
-              '2001/11/12',
+              '2020/11/12',
+              style: TextStyle(
+                color: Color.fromARGB(255, 175, 213, 244),
+                letterSpacing: 2.0,
+                fontSize: 25.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 30.0),
+            Text(
+              'LEVEL',
+              style: TextStyle(
+                color: Colors.grey,
+                letterSpacing: 2.0,
+              ),
+            ),
+            SizedBox(height: 1.0),
+            Text(
+              '$level',
               style: TextStyle(
                 color: Color.fromARGB(255, 175, 213, 244),
                 letterSpacing: 2.0,
